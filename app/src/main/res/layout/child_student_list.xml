@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="3dp"
+    card_view:cardCornerRadius="5dp"
+    android:layout_margin="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iv_student_image_child_student_list"
+            android:padding="5dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@mipmap/profile_round_grey"/>
+
+        <TextView
+            android:id="@+id/tv_student_name_child_student_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Student Name"
+            android:textSize="18sp"
+            android:padding="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/iv_student_image_child_student_list"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_student_name_child_student_list"
+            android:layout_toRightOf="@+id/iv_student_image_child_student_list"
+            >
+
+            <!--<ImageView-->
+                <!--android:layout_width="25dp"-->
+                <!--android:layout_height="25dp"-->
+                <!--android:src="@mipmap/location_marker_16"-->
+                <!--android:id="@+id/iv_location"/>-->
+
+            <TextView
+                android:id="@+id/tv_student_location_child_student_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="San Francisco"
+                android:paddingLeft="5dp"
+                android:layout_marginLeft="5dp"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/iv_student_attendance_child"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/add2"
+            android:layout_marginTop="10dp"
+            android:padding="20dp"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
+</LinearLayout>

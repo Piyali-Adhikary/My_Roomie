@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:weightSum="1">
+
+
+        <TextView
+            android:id="@+id/tv_permission_request_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Permission"
+            android:textStyle="bold"
+            android:textColor="#808080"
+            android:textSize="18sp"
+            android:layout_weight="0.5"
+            android:gravity="left"/>
+
+
+
+        <TextView
+            android:id="@+id/tv_permission_created_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="06/03/2018"
+            android:textStyle="bold"
+            android:textColor="#808080"
+            android:textSize="18sp"
+            android:layout_weight="0.5"
+            android:gravity="right"/>
+
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#808080"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="2dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:weightSum="1"
+        android:paddingTop="10dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From : "
+            android:textColor="#808080"
+            android:textSize="15sp"
+            android:layout_weight="0.5"
+            android:gravity="left"
+            android:id="@+id/tv_from_permission"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To : "
+            android:textColor="#808080"
+            android:textSize="15sp"
+            android:layout_weight="0.5"
+            android:gravity="left"
+            android:paddingLeft="3dp"
+            android:id="@+id/tv_to_permission"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:weightSum="1"
+        android:paddingTop="5dp">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="test text "
+            android:textColor="#808080"
+            android:textSize="15sp"
+            android:layout_weight="0.8"
+            android:gravity="left|center"
+            android:paddingTop="5dp"
+            android:maxLines="3"
+            android:id="@+id/tv_permission_description"/>
+
+
+        <ImageView
+            android:id="@+id/iv_permission_granted"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/cross_02"
+            android:layout_weight="0.1"
+            android:layout_marginLeft="10dp"/>
+
+
+        <ImageView
+            android:id="@+id/iv_permission_rejected"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@mipmap/right_02"
+            android:layout_weight="0.1"
+            android:layout_marginLeft="10dp"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

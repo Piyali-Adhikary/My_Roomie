@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/icon_group1">
+        <item
+            android:id="@+id/nav_profile_parent"
+            android:icon="@mipmap/profile"
+            android:title="Profile" />
+        <item
+            android:id="@+id/nav_food_menu"
+            android:icon="@mipmap/food_menu"
+            android:title="Food Menu" />
+        <item
+            android:id="@+id/nav_payments_due"
+            android:icon="@mipmap/pay"
+            android:title="Payments Due" />
+        <item
+            android:id="@+id/nav_time_in_time_out"
+            android:icon="@mipmap/timein"
+            android:title="Time In &amp; Time Out" />
+
+        <item
+            android:id="@+id/nav_permission_request_parent"
+            android:icon="@mipmap/p_r"
+            android:title="Permission Request" />
+
+        <item
+            android:id="@+id/nav_attend"
+            android:icon="@mipmap/atten"
+            android:title="Student Attend" />
+
+    </group>
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/icon_group2">
+
+        <item
+            android:id="@+id/nav_logout_parent"
+            android:icon="@mipmap/logout"
+            android:title="Logout" />
+    </group>
+
+    <!--<item android:title="Communicate">-->
+        <!--<menu>-->
+            <!--<item-->
+                <!--android:id="@+id/nav_share"-->
+                <!--android:icon="@drawable/ic_menu_share"-->
+                <!--android:title="Share" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_send"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="Send" />-->
+        <!--</menu>-->
+    <!--</item>-->
+
+</menu>

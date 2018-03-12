@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/iv_back_student_permission"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/back"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Permission"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:padding="10dp"/>
+    </FrameLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_weight="1"
+        android:id="@+id/rv_student_permission"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/tv_student_permission"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="No Permission Request Found"
+        android:textSize="15sp"
+        android:visibility="gone"/>
+
+    <LinearLayout
+    android:layout_weight="0"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark"
+    android:padding="15dp">
+
+    <Button
+    android:id="@+id/btn_new_permission_request"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Request New Permission"
+    android:textSize="15sp"
+    android:textColor="@color/colorWhite"
+    android:background="@color/colorPrimary"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:layout_gravity="center"/>
+
+    </LinearLayout>
+</LinearLayout>
