@@ -190,8 +190,10 @@ public class OTP_Verify extends Activity implements IJSONParseListener{
                         JSONObject student_details=result.getJSONObject("Student");
 
                         SharedPreferences.Editor editor=sharedPreferences.edit();
+                        editor.putString("user_type",result.getString("user_type"));
                         editor.putString("student_id",student_details.getString("student_id"));
                         editor.putString("campus_id",student_details.getString("campus_id"));
+                        editor.putString("campus_name",result.getString("campus_name"));
                         editor.putString("room_no",student_details.getString("room_no"));
                         editor.putString("bed_no",student_details.getString("bed_no"));
                         editor.putString("dob",student_details.getString("dob"));
@@ -210,6 +212,8 @@ public class OTP_Verify extends Activity implements IJSONParseListener{
                         JSONObject parent_details=result.getJSONObject("Parent");
 
                         SharedPreferences.Editor editor=sharedPreferences.edit();
+                        editor.putString("user_type",result.getString("user_type"));
+                        editor.putString("campus_name",result.getString("campus_name"));
                         editor.putString("parent_id",parent_details.getString("parent_id"));
                         editor.putString("user_type",parent_details.getString("user_type"));
                         editor.putString("campus_id",parent_details.getString("campus_id"));

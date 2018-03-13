@@ -27,6 +27,8 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -90,11 +92,17 @@ public class MainActivity extends AppCompatActivity
         imageView_profile=(ImageView)header. findViewById(R.id.imageView_profile);
         navigationView.setVisibility(View.VISIBLE);
 
+
         if (name.equalsIgnoreCase("Student")) {
 
             nav_name.setText(sharedPreferences.getString("student_name",""));
             //navigationView.getMenu().getItem(1).setActionView(R.layout.menu_image);
             navigationView.setNavigationItemSelectedListener(this);
+
+            Glide.with(MainActivity.this).load(sharedPreferences.getString("student_pic",""))
+                    .crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imageView_profile);
 
         } else if (name.equalsIgnoreCase("Parent")) {
 
@@ -217,8 +225,12 @@ public class MainActivity extends AppCompatActivity
         if(name.equalsIgnoreCase("Student")){
 
             if (id == R.id.nav_profile) {
-                // Handle the camera action
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+
+                Intent intent= new Intent(MainActivity.this,Profile.class);
+                startActivity(intent);
+                finish();
+
             } else if (id == R.id.nav_permission_request) {
 
                 Intent intent= new Intent(MainActivity.this,Student_Permission.class);
@@ -226,7 +238,11 @@ public class MainActivity extends AppCompatActivity
                 finish();
 
             } else if (id == R.id.nav_complaint_form) {
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+
+                Intent intent= new Intent(MainActivity.this,Student_Complaint_List.class);
+                startActivity(intent);
+                finish();
             } else if (id == R.id.nav_newsletter) {
 
                 Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
@@ -294,13 +310,16 @@ public class MainActivity extends AppCompatActivity
                 // Handle the camera action
                 Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_attendance_warden) {
-                //Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+
                 Intent intent=new Intent(MainActivity.this, Student_Attendance_By_Warden.class);
                 startActivity(intent);
                 finish();
 
             } else if (id == R.id.nav_complaints_submitted) {
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+
+                Intent intent=new Intent(MainActivity.this, Warden_Complaint_Status.class);
+                startActivity(intent);
+                finish();
             } else if (id == R.id.nav_request_approval) {
                 Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_security) {

@@ -109,7 +109,7 @@ public class Student_Permission_Request extends Activity implements IJSONParseLi
             @Override
             public void onClick(View view) {
 
-                if(spinner_selection.equalsIgnoreCase("")){
+                if(spinner_selection.equalsIgnoreCase("--Select Reasons--")){
                     Toast.makeText(Student_Permission_Request.this, "Please Select Permission Reasons", Toast.LENGTH_SHORT).show();
                 }else if(et_from.getText().toString().equalsIgnoreCase("")){
                     Toast.makeText(Student_Permission_Request.this, "Please Select Time", Toast.LENGTH_SHORT).show();

@@ -316,32 +316,5 @@ public class Parent_Permission_Request_Adapter extends RecyclerView.Adapter<Pare
             pDialog.dismiss();
     }
 
-    void showAlertDialog(Context c, final String permission_status){
-
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(c);
-        alertDialogBuilder.setTitle("Alert");
-        alertDialogBuilder.setMessage("Do you want to submit permission?");
-        alertDialogBuilder.setCancelable(false);
-        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                studentPermissionsStatusChange(permission_status);
-            }
-        });
-
-        alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                if(permission_status.equalsIgnoreCase("accepted")){
-
-                }else {
-
-                }
-            }
-        });
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-    }
 
 }
