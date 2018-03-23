@@ -65,7 +65,6 @@ public class Parent_Permission_Request_Old_Adapter extends RecyclerView.Adapter<
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.child_layout_permission_request_parent, parent, false);
 
-
         return new MyViewHolder(itemView);
     }
 
@@ -84,55 +83,6 @@ public class Parent_Permission_Request_Old_Adapter extends RecyclerView.Adapter<
             holder.iv_permission_rejected.setImageResource(R.mipmap.cross_01);
         }
 
-//        if(list.get(position).getPermission_granted().equalsIgnoreCase("yes")){
-//            holder.iv_permission_granted.setImageResource(R.mipmap.right_01);
-//        }else {
-//            holder.iv_permission_granted.setImageResource(R.mipmap.cross_02);
-//        }
-//
-//        if(list.get(position).getPermission_rejected().equalsIgnoreCase("yes")){
-//            holder.iv_permission_rejected.setImageResource(R.mipmap.cross_01);
-//        }else {
-//            holder.iv_permission_rejected.setImageResource(R.mipmap.right_02);
-//        }
-
-//        holder.iv_permission_granted.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                if(list.get(position).getPermission_granted().equalsIgnoreCase("no")){
-//                    holder.iv_permission_granted.setImageResource(R.mipmap.right_01);
-//                    list.get(position).setPermission_granted("yes");
-//
-//                    //studentsDayAttendanceByWarden();
-//                }else {
-//                    holder.iv_permission_granted.setImageResource(R.mipmap.cross_02);
-//                    list.get(position).setPermission_granted("no");
-//                    //studentsDayAttendanceByWarden();
-//                }
-//
-//
-//            }
-//        });
-
-//        holder.iv_permission_rejected.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                if(list.get(position).getPermission_rejected().equalsIgnoreCase("no")){
-//                    holder.iv_permission_rejected.setImageResource(R.mipmap.cross_01);
-//                    list.get(position).setPermission_rejected("yes");
-//
-//                    //studentsDayAttendanceByWarden();
-//                }else {
-//                    holder.iv_permission_rejected.setImageResource(R.mipmap.right_02);
-//                    list.get(position).setPermission_rejected("no");
-//                    //studentsDayAttendanceByWarden();
-//                }
-//
-//
-//            }
-//        });
 
     }
 

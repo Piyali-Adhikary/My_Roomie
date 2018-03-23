@@ -215,6 +215,7 @@ public class Student_Complaint_Request extends Activity implements IJSONParseLis
                     Toast.makeText(this, response.getString("result"), Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(Student_Complaint_Request.this,MainActivity.class);
                     startActivity(intent);
+                    finish();
 
                 }else {
                     Toast.makeText(Student_Complaint_Request.this,response.getString("result"),Toast.LENGTH_LONG).show();
@@ -293,5 +294,12 @@ public class Student_Complaint_Request extends Activity implements IJSONParseLis
 
         date=String.valueOf(mYear) +"-"+String.valueOf(mMonth+1)+"-"+String.valueOf(mDay)+" "+String.valueOf(mHour) + ":" + String.valueOf(mMinute);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Student_Complaint_Request.this,Student_Complaint_List.class);
+        startActivity(intent);
+        finish();
     }
 }

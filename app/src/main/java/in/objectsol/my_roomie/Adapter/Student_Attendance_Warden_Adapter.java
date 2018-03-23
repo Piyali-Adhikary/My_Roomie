@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,6 +26,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+import in.objectsol.my_roomie.Activity.Profile;
 import in.objectsol.my_roomie.Activity.Student_Attendance_By_Warden;
 import in.objectsol.my_roomie.R;
 import in.objectsol.my_roomie.SetGet.Permission_Types_SetGet;
@@ -55,12 +59,13 @@ public class Student_Attendance_Warden_Adapter extends RecyclerView.Adapter<Stud
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         public TextView student_name,student_location;
-        public ImageView student_image,student_attendance;
+        public ImageView student_attendance;
+        public CircleImageView student_image;
         public MyViewHolder(View itemView) {
             super(itemView);
             student_name = (TextView) itemView.findViewById(R.id.tv_student_name_child_student_list);
             student_location = (TextView) itemView.findViewById(R.id.tv_student_location_child_student_list);
-            student_image = (ImageView) itemView.findViewById(R.id.iv_student_image_child_student_list);
+            student_image = (CircleImageView) itemView.findViewById(R.id.iv_student_image_child_student_list);
             student_attendance = (ImageView) itemView.findViewById(R.id.iv_student_attendance_child);
         }
     }
@@ -89,9 +94,13 @@ public class Student_Attendance_Warden_Adapter extends RecyclerView.Adapter<Stud
 
         holder.student_name.setText(list.get(position).getStudent_name());
         holder.student_location.setText(list.get(position).getEmail());
-        holder.student_image.setImageResource(R.mipmap.profile_round_grey);
+        //holder.student_image.setImageResource(R.mipmap.profile_round_grey);
         student_id=list.get(position).getStudent_id();
 
+        Glide.with(mContext).load(list.get(position).getStudent_pic())
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.student_image);
 
         if(Student_Attendance_By_Warden.date.equalsIgnoreCase(Student_Attendance_By_Warden.current_date)){
             holder.student_attendance.setEnabled(true);

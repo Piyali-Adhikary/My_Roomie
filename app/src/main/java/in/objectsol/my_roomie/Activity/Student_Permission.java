@@ -23,12 +23,14 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 import in.objectsol.my_roomie.Adapter.Parent_Permission_Request_Adapter;
 import in.objectsol.my_roomie.Adapter.Parent_Permission_Request_Old_Adapter;
+import in.objectsol.my_roomie.Adapter.Student_Permission_Request_Adapter;
 import in.objectsol.my_roomie.Others.Utils;
 import in.objectsol.my_roomie.R;
 import in.objectsol.my_roomie.SetGet.Permission_SetGet;
@@ -179,8 +181,8 @@ public class Student_Permission extends Activity implements IJSONParseListener{
                             permission_setGetArrayList.add(permission_setGet);
                         }
 
-                        Parent_Permission_Request_Old_Adapter request_old_adapter=new Parent_Permission_Request_Old_Adapter(Student_Permission.this,permission_setGetArrayList);
-                        rv_student_permission.setAdapter(request_old_adapter);
+                        Student_Permission_Request_Adapter adapter=new Student_Permission_Request_Adapter(Student_Permission.this,permission_setGetArrayList);
+                        rv_student_permission.setAdapter(adapter);
 
                     }else {
                         rv_student_permission.setVisibility(View.GONE);
@@ -192,9 +194,9 @@ public class Student_Permission extends Activity implements IJSONParseListener{
                 }
             }
 
-            catch (Exception e)
+            catch (JSONException e)
             {
-
+                e.printStackTrace();
             }
         }
 

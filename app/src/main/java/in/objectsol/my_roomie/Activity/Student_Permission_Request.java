@@ -295,6 +295,7 @@ public class Student_Permission_Request extends Activity implements IJSONParseLi
                     Toast.makeText(this, response.getString("result"), Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(Student_Permission_Request.this,MainActivity.class);
                     startActivity(intent);
+                    finish();
 
                 }else {
                     Toast.makeText(Student_Permission_Request.this,response.getString("result"),Toast.LENGTH_LONG).show();

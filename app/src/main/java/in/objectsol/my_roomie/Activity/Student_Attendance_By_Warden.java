@@ -378,9 +378,9 @@ public class Student_Attendance_By_Warden extends Activity implements IJSONParse
                 }
             }
 
-            catch (Exception e)
+            catch (JSONException e)
             {
-
+                e.printStackTrace();
             }
         }else if (requestCode == studentsDayAttendanceByWarden) {
             System.out.println("Response for studentsDayAttendanceByWarden------" + response.toString());
@@ -400,9 +400,9 @@ public class Student_Attendance_By_Warden extends Activity implements IJSONParse
                 }
             }
 
-            catch (Exception e)
+            catch (JSONException e)
             {
-
+                e.printStackTrace();
             }
         }
 
@@ -456,5 +456,12 @@ public class Student_Attendance_By_Warden extends Activity implements IJSONParse
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Student_Attendance_By_Warden.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

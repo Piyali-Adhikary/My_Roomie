@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_back_student_service_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:src="@mipmap/back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Sevice Request"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_weight="0"
+        android:orientation="vertical"
+        android:background="#c5c5c5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:padding="10dp"
+            android:text="Permissions"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_weight="0.5"
+        android:id="@+id/rv_permission_service_request"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        >
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_weight="0.5"
+        android:id="@+id/tv_permission_service_request"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="No Permissions Found"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:layout_weight="0"
+        android:orientation="vertical"
+        android:background="#c5c5c5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:padding="10dp"
+            android:text="Complaints"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_weight="0.5"
+        android:id="@+id/rv_complaints_service_request"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_weight="0.5"
+        android:id="@+id/tv_complaints_service_request"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="No Complaints Found"
+        android:textSize="15sp"
+        android:visibility="gone"/>
+
+    <!--<LinearLayout-->
+        <!--android:layout_weight="0"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical"-->
+        <!--android:background="@color/colorPrimaryDark"-->
+        <!--android:padding="15dp">-->
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_send_parent_permission_request"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Send"-->
+            <!--android:textSize="15sp"-->
+            <!--android:textColor="@color/colorWhite"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:layout_gravity="center"/>-->
+
+    <!--</LinearLayout>-->
+
+</LinearLayout>

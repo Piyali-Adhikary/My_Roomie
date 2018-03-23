@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_jan_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_jan_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="January"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_feb_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_feb_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="February"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_march_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_march_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="March"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_april_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_april_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="April"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_may_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_may_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="May"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_june_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_june_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="June"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_july_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_july_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="July"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_aug_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_aug_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="August"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_sept_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_sept_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="September"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_oct_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_oct_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="October"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_nov_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_nov_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="November"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_dec_child_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:id="@+id/tv_dec_payment_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="December"
+            android:textSize="18sp"
+            android:padding="10dp"
+            android:textColor="@color/colorWhite"/>
+    </LinearLayout>
+</LinearLayout>

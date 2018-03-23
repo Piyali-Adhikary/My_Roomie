@@ -93,11 +93,7 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
         holder.tv_complaint.setText(list.get(position).getPermission_type());
         holder.tv_complaint_description.setText(list.get(position).getDescription());
 
-        complaint_id=list.get(position).getId();
-        student_id=list.get(position).getStudent_id();
-        complain_type=list.get(position).getPermission_type();
-        description=list.get(position).getDescription();
-        complain_created_at=list.get(position).getCreated_at();
+
 
 
         if(list.get(position).getStatus().equalsIgnoreCase("pending")){
@@ -125,6 +121,12 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
         holder.iv_child_complaint_granted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                complaint_id=list.get(position).getId();
+                student_id=list.get(position).getStudent_id();
+                complain_type=list.get(position).getPermission_type();
+                description=list.get(position).getDescription();
+                complain_created_at=list.get(position).getCreated_at();
 
                 if(list.get(position).getPermission_granted().equalsIgnoreCase("no")){
                     holder.iv_child_complaint_granted.setImageResource(R.mipmap.right_01);

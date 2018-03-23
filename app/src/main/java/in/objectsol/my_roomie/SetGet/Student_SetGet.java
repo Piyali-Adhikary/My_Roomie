@@ -6,8 +6,41 @@ package in.objectsol.my_roomie.SetGet;
 
 public class Student_SetGet {
 
-    String student_id="", campus_id="", room_no="", bed_no="", dob="", email="", address="", student_name="",student_pic="";
+    String student_id="", campus_id="", room_no="", bed_no="", dob="", email="", address="", student_name="",student_pic="",user_type="";
     String mobile_number="",privacy_permission_status="", auth_token="", last_login="",status="",permission_status="", warden_id="";
+    String check_out_time="",check_in_time="",date="";
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getCheck_out_time() {
+        return check_out_time;
+    }
+
+    public void setCheck_out_time(String check_out_time) {
+        this.check_out_time = check_out_time;
+    }
+
+    public String getCheck_in_time() {
+        return check_in_time;
+    }
+
+    public void setCheck_in_time(String check_in_time) {
+        this.check_in_time = check_in_time;
+    }
+
+    public String getUser_type() {
+        return user_type;
+    }
+
+    public void setUser_type(String user_type) {
+        this.user_type = user_type;
+    }
 
     public String getWarden_id() {
         return warden_id;

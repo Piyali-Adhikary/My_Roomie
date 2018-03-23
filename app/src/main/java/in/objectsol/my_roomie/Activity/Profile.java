@@ -110,4 +110,11 @@ public class Profile extends AppCompatActivity{
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Profile.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

@@ -61,7 +61,7 @@
             android:textSize="18sp"
             android:textColor="#000"
             android:padding="10dp"
-            android:text="Old Permissions"/>
+            android:text="Old Complaints"/>
 
     </LinearLayout>
 

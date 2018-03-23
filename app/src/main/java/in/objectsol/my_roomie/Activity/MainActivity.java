@@ -44,21 +44,24 @@ import in.objectsol.my_roomie.Utils.MyVolley;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,IJSONParseListener {
 
-    ImageView iv_attendance_warden;
-    ImageView iv_parent_permission_request;
+    ImageView iv_attendance_warden,iv_foodmenu_warden,iv_permission_warden;
+    ImageView iv_parent_permission_request,iv_foodmenu_list_parent,iv_parent_payment_status;
+    ImageView iv_service_request,iv_student_food_menu, iv_payment_status_student;
 
-    String name = "";
+    String name = "",privacy_type="";
     ImageView imageView;
     TextView nav_name;
     ImageView imageView_profile;
-    SharedPreferences sharedPreferences;
+    SharedPreferences sharedPreferences,sharedPreferences_student;
     LinearLayout ll_student_dashboard,ll_parent_dashboard,ll_warden_dashboard;
     String user_id="";
 
     int getisAllowedPrivacyFromParent=601;
+    int isParentAllowedToCheckPrivacyType=602;
     int dologout=612;
     ProgressDialog pDialog;
     private static final String Is_Privacy_Allowed_From_Parent_URL = "http://174.136.1.35/dev/myroomie/student/isAllowedPrivacyFromParent/";
+    private static final String Is_Parent_Allowed_To_Check_Privacy_URL = "http://174.136.1.35/dev/myroomie/parents/isParentAllowedToCheckPrivacyType/";
     private static final String Logout_URL = "http://174.136.1.35/dev/myroomie/account/logout/";
     private BroadcastReceiver mRegistrationBroadcastReceiver;
 
@@ -71,6 +74,7 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         sharedPreferences=getSharedPreferences("Login",MODE_PRIVATE);
+        sharedPreferences_student=getSharedPreferences("student",MODE_PRIVATE);
         if(sharedPreferences.getString("user_type","").equalsIgnoreCase("S")){
             name="Student";
         }else if(sharedPreferences.getString("user_type","").equalsIgnoreCase("P")){
@@ -113,18 +117,24 @@ public class MainActivity extends AppCompatActivity
             navigationView.setNavigationItemSelectedListener(this);
             nav_name.setText(sharedPreferences.getString("parent_name",""));
 
+            Glide.with(MainActivity.this).load(sharedPreferences.getString("parent_pic",""))
+                    .crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imageView_profile);
+
         } else if (name.equalsIgnoreCase("Warden")) {
 
             navigationView.getMenu().clear();
             navigationView.inflateMenu(R.menu.activity_main_warden_drawer);
             navigationView.setNavigationItemSelectedListener(this);
             nav_name.setText(sharedPreferences.getString("warden_name",""));
+
+            Glide.with(MainActivity.this).load(sharedPreferences.getString("warden_image",""))
+                    .crossFade()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(imageView_profile);
         }
 
-//        Picasso.with(mContext).load(list.get(position).getProduct_image())
-//                .transform(new CircleTransform())
-//                .placeholder(R.drawable.sub)
-//                .into(holder.iv_order_for_me);
 
 
         // ............................... mainactivity ...........................
@@ -153,8 +163,42 @@ public class MainActivity extends AppCompatActivity
             ll_student_dashboard.setVisibility(View.GONE);
         }
 
+        //Student View
+        iv_service_request=(ImageView)findViewById(R.id.iv_service_request);
+        iv_student_food_menu=(ImageView)findViewById(R.id.iv_student_food_menu);
+        iv_payment_status_student=(ImageView)findViewById(R.id.iv_payment_status_student);
+
+        iv_payment_status_student.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Payment_Status.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        iv_service_request.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Student_Service_Request.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        iv_student_food_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Food_Items.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         //Warden View
         iv_attendance_warden=(ImageView)findViewById(R.id.iv_attendance_warden);
+        iv_foodmenu_warden=(ImageView)findViewById(R.id.iv_foodmenu_warden);
+        iv_permission_warden=(ImageView)findViewById(R.id.iv_permission_warden);
 
         iv_attendance_warden.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,14 +209,52 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        iv_permission_warden.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Warden_Request_Approval_Student_List.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        iv_foodmenu_warden.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Warden_Food_Items.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         //Parent View
 
         iv_parent_permission_request=(ImageView)findViewById(R.id.iv_parent_permission_request);
+        iv_foodmenu_list_parent=(ImageView)findViewById(R.id.iv_foodmenu_list_parent);
+        iv_parent_payment_status=(ImageView)findViewById(R.id.iv_parent_payment_status);
+
+        iv_parent_payment_status.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Payments_Due_Parents.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         iv_parent_permission_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,Parent_Permission_Request.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        iv_foodmenu_list_parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Parent_Food_Items.class);
                 startActivity(intent);
                 finish();
             }
@@ -225,7 +307,6 @@ public class MainActivity extends AppCompatActivity
         if(name.equalsIgnoreCase("Student")){
 
             if (id == R.id.nav_profile) {
-                //Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
 
                 Intent intent= new Intent(MainActivity.this,Profile.class);
                 startActivity(intent);
@@ -238,18 +319,25 @@ public class MainActivity extends AppCompatActivity
                 finish();
 
             } else if (id == R.id.nav_complaint_form) {
-                //Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
 
                 Intent intent= new Intent(MainActivity.this,Student_Complaint_List.class);
                 startActivity(intent);
                 finish();
             } else if (id == R.id.nav_newsletter) {
+                Intent intent= new Intent(MainActivity.this,Newsletter.class);
+                startActivity(intent);
+                finish();
 
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_payment_status) {
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+                Intent intent= new Intent(MainActivity.this,Payment_Status.class);
+                startActivity(intent);
+                finish();
             } else if (id == R.id.nav_attendance) {
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+
+                Intent intent= new Intent(MainActivity.this,Student_View_Attendance.class);
+                startActivity(intent);
+                finish();
+
             } else if (id == R.id.nav_privacy_settings) {
 
                 if (Utils.isNetworkAvailable(MainActivity.this)) {
@@ -272,7 +360,6 @@ public class MainActivity extends AppCompatActivity
                 }
 
             } else if (id == R.id.nav_logout) {
-                //Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
 
                 user_id=sharedPreferences.getString("student_id","");
                 Dologout();
@@ -280,25 +367,73 @@ public class MainActivity extends AppCompatActivity
         }else if (name.equalsIgnoreCase("Parent")){
 
             if (id == R.id.nav_profile_parent) {
-                // Handle the camera action
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+
+                Intent intent= new Intent(MainActivity.this,Parent_Profile.class);
+                startActivity(intent);
+                finish();
+
             } else if (id == R.id.nav_food_menu) {
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(MainActivity.this,Parent_Food_Items.class);
+                startActivity(intent);
+                finish();
             } else if (id == R.id.nav_payments_due) {
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+
+                Intent intent=new Intent(MainActivity.this,Payments_Due_Parents.class);
+                startActivity(intent);
+                finish();
+
             } else if (id == R.id.nav_time_in_time_out) {
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+
+
+                if (Utils.isNetworkAvailable(MainActivity.this)) {
+                    privacy_type="checkincheckout";
+                    getisParentAllowedToCheckPrivacyType("checkincheckout");
+                }
+                else {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                    alertDialogBuilder.setTitle("No Network Available");
+                    alertDialogBuilder.setMessage("Please Turn On Your Internet Connection");
+                    alertDialogBuilder.setCancelable(false);
+                    alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
+
+
             } else if (id == R.id.nav_permission_request_parent) {
-                //Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
 
                 Intent intent=new Intent(MainActivity.this, Parent_Permission_Request.class);
                 startActivity(intent);
                 finish();
 
             } else if (id == R.id.nav_attend) {
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+
+                if (Utils.isNetworkAvailable(MainActivity.this)) {
+                    privacy_type="attendance";
+                    getisParentAllowedToCheckPrivacyType("attendance");
+                }
+                else {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                    alertDialogBuilder.setTitle("No Network Available");
+                    alertDialogBuilder.setMessage("Please Turn On Your Internet Connection");
+                    alertDialogBuilder.setCancelable(false);
+                    alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
+
+
             } else if (id == R.id.nav_logout_parent) {
-                //Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
 
                 user_id=sharedPreferences.getString("parent_id","");
                 Dologout();
@@ -307,8 +442,11 @@ public class MainActivity extends AppCompatActivity
         }else if (name.equalsIgnoreCase("Warden")){
 
             if (id == R.id.nav_profile_warden) {
-                // Handle the camera action
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+
+                Intent intent= new Intent(MainActivity.this,Warden_Profile.class);
+                startActivity(intent);
+                finish();
+
             } else if (id == R.id.nav_attendance_warden) {
 
                 Intent intent=new Intent(MainActivity.this, Student_Attendance_By_Warden.class);
@@ -321,15 +459,20 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 finish();
             } else if (id == R.id.nav_request_approval) {
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+                Intent intent= new Intent(MainActivity.this,Warden_Request_Approval_Student_List.class);
+                startActivity(intent);
+                finish();
             } else if (id == R.id.nav_security) {
                 Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_visitors) {
                 Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_enter_time_in) {
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
+
+                Intent intent= new Intent(MainActivity.this,Warden_Time_In_Time_Out.class);
+                startActivity(intent);
+                finish();
+
             } else if (id == R.id.nav_logout_warden) {
-                //Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
 
                 user_id=sharedPreferences.getString("warden_id","");
                 Dologout();
@@ -342,6 +485,19 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    void getisParentAllowedToCheckPrivacyType(String privacy_type) {
+        JSONRequestResponse mResponse = new JSONRequestResponse(MainActivity.this);
+        Bundle parms = new Bundle();
+        parms.putString("parent_id", sharedPreferences.getString("parent_id",""));
+        parms.putString("campus_id", sharedPreferences_student.getString("campus_id",""));
+        parms.putString("auth_key", sharedPreferences.getString("auth_token",""));
+        parms.putString("privacy_type", privacy_type);
+
+        MyVolley.init(MainActivity.this);
+        ShowProgressDilog(MainActivity.this);
+        mResponse.getResponse(Request.Method.POST, Is_Parent_Allowed_To_Check_Privacy_URL, isParentAllowedToCheckPrivacyType, MainActivity.this, parms, false);
     }
 
     void Dologout() {
@@ -408,7 +564,7 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(MainActivity.this, response.getString("result"), Toast.LENGTH_LONG).show();
                 }
             } catch (Exception e) {
-
+                e.printStackTrace();
             }
         }else if (requestCode == dologout){
 
@@ -431,7 +587,49 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(MainActivity.this, response.getString("result"), Toast.LENGTH_LONG).show();
                 }
             } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else if (requestCode == isParentAllowedToCheckPrivacyType) {
+            System.out.println("Response for isParentAllowedToCheckPrivacyType------" + response.toString());
 
+            try {
+
+                if (response.getString("status_code").equalsIgnoreCase("success")) {
+
+                    JSONObject result=response.getJSONObject("result");
+                    if(result.getString("status").equalsIgnoreCase("show")) {
+
+                        if(privacy_type.equalsIgnoreCase("attendance")){
+                            Intent intent= new Intent(MainActivity.this,Parent_View_Student_Attendance.class);
+                            startActivity(intent);
+                            finish();
+                        }else if (privacy_type.equalsIgnoreCase("checkincheckout")){
+                            Intent intent=new Intent(MainActivity.this, Parent_Time_in_Time_out.class);
+                            startActivity(intent);
+                            finish();
+                        }
+
+                    }else {
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                        alertDialogBuilder.setTitle("Alert");
+                        alertDialogBuilder.setMessage("This function is turned off by student.");
+                        alertDialogBuilder.setCancelable(false);
+                        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
+                    }
+
+                } else {
+                    Toast.makeText(MainActivity.this, response.getString("result"), Toast.LENGTH_LONG).show();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
 

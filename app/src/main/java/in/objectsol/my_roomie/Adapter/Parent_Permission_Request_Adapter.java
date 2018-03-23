@@ -98,12 +98,7 @@ public class Parent_Permission_Request_Adapter extends RecyclerView.Adapter<Pare
         holder.tv_from.setText("From : " +list.get(position).getFrom_time());
         holder.tv_to.setText("To : " +list.get(position).getTo_time());
 
-        permission_created_at=list.get(position).getCreated_at();
-        permission_type=list.get(position).getPermission_type();
-        description=list.get(position).getDescription();
-        from_time=list.get(position).getFrom_time();
-        to_time=list.get(position).getTo_time();
-        permission_id=list.get(position).getId();
+
 
         if(list.get(position).getPermission_granted().equalsIgnoreCase("yes")){
             holder.iv_permission_granted.setImageResource(R.mipmap.right_01);
@@ -120,6 +115,13 @@ public class Parent_Permission_Request_Adapter extends RecyclerView.Adapter<Pare
         holder.iv_permission_granted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                permission_created_at=list.get(position).getCreated_at();
+                permission_type=list.get(position).getPermission_type();
+                description=list.get(position).getDescription();
+                from_time=list.get(position).getFrom_time();
+                to_time=list.get(position).getTo_time();
+                permission_id=list.get(position).getId();
 
                 if(list.get(position).getPermission_granted().equalsIgnoreCase("no")){
                     holder.iv_permission_granted.setImageResource(R.mipmap.right_01);

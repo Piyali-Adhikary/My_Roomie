@@ -252,4 +252,11 @@ public class Parent_Permission_Request extends Activity implements IJSONParseLis
         if (pDialog != null && pDialog.isShowing())
             pDialog.dismiss();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Parent_Permission_Request.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

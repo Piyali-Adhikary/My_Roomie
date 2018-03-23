@@ -248,4 +248,11 @@ public class Warden_Complaint_Status extends Activity implements IJSONParseListe
         if (pDialog != null && pDialog.isShowing())
             pDialog.dismiss();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Warden_Complaint_Status.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }
