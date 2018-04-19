@@ -29,8 +29,12 @@ import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import in.objectsol.my_roomie.Adapter.Permission_Types_Adapter;
 import in.objectsol.my_roomie.Others.Utils;
@@ -52,7 +56,7 @@ public class Student_Permission_Request extends Activity implements IJSONParseLi
     ImageView iv_back_student_permission_request;
     ArrayList<Permission_Types_SetGet> arrayList_permission_reason;
 
-    String date_time="",date="";
+    String date_time="",date="", fromTime="", toTime="";
     int getPermissionRequest=602;
     int getPermissionTypes=603;
     ProgressDialog pDialog;
@@ -191,7 +195,7 @@ public class Student_Permission_Request extends Activity implements IJSONParseLi
         int mHour = c.get(Calendar.HOUR_OF_DAY);
         int mMinute = c.get(Calendar.MINUTE);
 
-        date=String.valueOf(mYear) +"-"+String.valueOf(mMonth+1)+"-"+String.valueOf(mDay)+" "+String.valueOf(mHour) + ":" + String.valueOf(mMinute);
+        date=String.valueOf(mDay) +"-"+String.valueOf(mMonth+1)+"-"+String.valueOf(mYear)+" "+String.valueOf(mHour) + ":" + String.valueOf(mMinute);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                 new DatePickerDialog.OnDateSetListener() {
@@ -200,7 +204,7 @@ public class Student_Permission_Request extends Activity implements IJSONParseLi
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
                         //date_time = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
-                        date_time = String.valueOf(year) +"-"+String.valueOf(monthOfYear+1)+"-"+String.valueOf(dayOfMonth);
+                        date_time = String.valueOf(dayOfMonth) +"-"+String.valueOf(monthOfYear+1)+"-"+String.valueOf(year);
                         //*************Call Time Picker Here ********************
                         tiemPicker();
                     }
@@ -223,9 +227,51 @@ public class Student_Permission_Request extends Activity implements IJSONParseLi
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 
                         if(isFromDate){
-                            et_from.setText(date_time+" "+hourOfDay + ":" + minute);
+
+                            fromTime=date_time+" "+hourOfDay + ":" + minute;
+
+                            et_from.setText(fromTime);
                         }else {
-                            et_to.setText(date_time+" "+hourOfDay + ":" + minute);
+                            toTime=date_time+" "+hourOfDay + ":" + minute;
+                            Date date= convertStringtoDate(fromTime);
+                            Date date1= convertStringtoDate(toTime);
+                            if (date!=null && date1!=null){
+
+                                if(date1.compareTo(date)>0){
+                                    et_to.setText(toTime);
+                                    System.out.println("toTime is after fromTime");
+                                }else if(date1.compareTo(date)<0){
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Student_Permission_Request.this);
+                                    alertDialogBuilder.setTitle("Alert");
+                                    alertDialogBuilder.setMessage("To-Time must be after From-Time");
+                                    alertDialogBuilder.setCancelable(false);
+                                    alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    });
+                                    AlertDialog alertDialog = alertDialogBuilder.create();
+                                    alertDialog.show();
+
+                                }else{
+                                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Student_Permission_Request.this);
+                                    alertDialogBuilder.setTitle("Alert");
+                                    alertDialogBuilder.setMessage("To-Time cannot be same as From-Time");
+                                    alertDialogBuilder.setCancelable(false);
+                                    alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    });
+                                    AlertDialog alertDialog = alertDialogBuilder.create();
+                                    alertDialog.show();
+                                }
+                            }else {
+                                Toast.makeText(Student_Permission_Request.this, "Please Select From Time", Toast.LENGTH_SHORT).show();
+                            }
+
                         }
 
                     }
@@ -369,6 +415,21 @@ public class Student_Permission_Request extends Activity implements IJSONParseLi
         Intent intent=new Intent(Student_Permission_Request.this,Student_Permission.class);
         startActivity(intent);
         finish();
+    }
+
+    public Date convertStringtoDate(String string){
+
+        DateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+        Date date1=null;
+        try{
+            date1 = format.parse(string);
+            System.out.println(date1);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+
+
+        return date1;
     }
 
 }

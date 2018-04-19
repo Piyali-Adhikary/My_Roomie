@@ -22,7 +22,10 @@ import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import in.objectsol.my_roomie.Activity.Parent_Permission_Request;
 import in.objectsol.my_roomie.Activity.Warden_Complaint_Status;
@@ -55,7 +58,7 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView tv_complaint,tv_date,tv_complaint_description,tv_status;
+        public TextView tv_complaint,tv_date,tv_complaint_description,tv_status,tv_student_name,tv_room_no;
         public ImageView iv_child_complaint_granted;
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -64,6 +67,8 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
             tv_status = (TextView) itemView.findViewById(R.id.tv_child_complaint_status);
             tv_complaint_description = (TextView) itemView.findViewById(R.id.tv_child_complaint_description);
             iv_child_complaint_granted = (ImageView) itemView.findViewById(R.id.iv_child_complaint_granted);
+            tv_student_name = (TextView) itemView.findViewById(R.id.tv_student_name_child_student_complaint);
+            tv_room_no = (TextView) itemView.findViewById(R.id.tv_room_no_child_student_complaint);
 
         }
     }
@@ -89,9 +94,13 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        holder.tv_date.setText(list.get(position).getCreated_at());
+        final String createdTime=list.get(position).getCreated_at();
+        holder.tv_date.setText(createdTime);
         holder.tv_complaint.setText(list.get(position).getPermission_type());
         holder.tv_complaint_description.setText(list.get(position).getDescription());
+
+        holder.tv_room_no.setText("Room No : " + list.get(position).getRoom_no());
+        holder.tv_student_name.setText("Name : " + list.get(position).getStudent_name());
 
 
 
@@ -99,10 +108,12 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
         if(list.get(position).getStatus().equalsIgnoreCase("pending")){
 
             holder.tv_status.setText("Status : Not Yet Fixed" );
+            holder.iv_child_complaint_granted.setEnabled(false);
 
         }else if(list.get(position).getStatus().equalsIgnoreCase("fixed")){
 
             holder.tv_status.setText("Status : Not Yet Verified");
+            holder.iv_child_complaint_granted.setEnabled(true);
 
         }
 
@@ -126,7 +137,7 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
                 student_id=list.get(position).getStudent_id();
                 complain_type=list.get(position).getPermission_type();
                 description=list.get(position).getDescription();
-                complain_created_at=list.get(position).getCreated_at();
+                complain_created_at=createdTime;
 
                 if(list.get(position).getPermission_granted().equalsIgnoreCase("no")){
                     holder.iv_child_complaint_granted.setImageResource(R.mipmap.right_01);
@@ -233,6 +244,7 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
 
                 }else {
                     Toast.makeText(mContext,response.getString("result"),Toast.LENGTH_LONG).show();
+
                 }
             }
 
@@ -270,5 +282,23 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
     void DismissProgress(Context c) {
         if (pDialog != null && pDialog.isShowing())
             pDialog.dismiss();
+    }
+
+    public String parseDateToddMMyyyy(String time) {
+        String inputPattern = "yyyy-MM-dd HH:mm";
+        String outputPattern = "dd-MM-yyyy HH:mm";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(time);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
     }
 }

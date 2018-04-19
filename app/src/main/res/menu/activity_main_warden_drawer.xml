@@ -30,10 +30,10 @@
             android:icon="@mipmap/visitor"
             android:title="Visitors" />
 
-        <item
+        <!--<item
             android:id="@+id/nav_enter_time_in"
             android:icon="@mipmap/seting"
-            android:title="Enter Time In &amp; Time Out" />
+            android:title="Enter Time In &amp; Time Out" />-->
 
     </group>
 

@@ -96,7 +96,12 @@ public class Student_Attendance_By_Warden extends Activity implements IJSONParse
         int mMonth = c.get(Calendar.MONTH);
         int mDay = c.get(Calendar.DAY_OF_MONTH);
 
-        current_date= String.valueOf(mYear) +"-"+String.valueOf(mMonth+1)+"-"+String.valueOf(mDay);
+        int mHour= c.get(Calendar.HOUR_OF_DAY);
+        if(mHour<2){
+            mDay=mDay-1;
+        }
+
+        current_date= String.valueOf(mDay) +"-"+String.valueOf(mMonth+1)+"-"+String.valueOf(mYear);
         date=current_date;
         et_enter_date.setText(date);
 
@@ -446,7 +451,7 @@ public class Student_Attendance_By_Warden extends Activity implements IJSONParse
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
                         //date_time = dayOfMonth + "-" + (monthOfYear + 1) + "-" + year;
-                        date = String.valueOf(year) +"-"+String.valueOf(monthOfYear+1)+"-"+String.valueOf(dayOfMonth);
+                        date = String.valueOf(dayOfMonth) +"-"+String.valueOf(monthOfYear+1)+"-"+ String.valueOf(year);
                         et_enter_date.setText(date);
 
                     }

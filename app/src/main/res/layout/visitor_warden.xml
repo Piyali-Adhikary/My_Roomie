@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/iv_back_visitor_warden"
+            android:padding="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/back"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Visitors"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:padding="10dp"/>
+    </FrameLayout>
+    <android.support.v7.widget.RecyclerView
+        android:layout_weight="1"
+        android:id="@+id/rv_visitor_warden"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"/>
+
+</LinearLayout>

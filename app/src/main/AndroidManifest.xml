@@ -132,6 +132,10 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden"/>
 
+        <activity android:name=".Activity.Visitor_Warden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden"/>
+
         <!-- Firebase Notifications -->
         <service android:name=".Others.MyFirebaseMessagingService"
             android:enabled="true"

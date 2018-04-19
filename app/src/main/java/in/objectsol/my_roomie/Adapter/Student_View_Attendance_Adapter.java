@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import in.objectsol.my_roomie.R;
 import in.objectsol.my_roomie.SetGet.Attendance_SetGet;
@@ -68,7 +71,8 @@ public class Student_View_Attendance_Adapter extends RecyclerView.Adapter<Studen
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        holder.tv_date.setText(list.get(position).getDate());
+        String date= parseDateToddMMyyyy(list.get(position).getDate());
+        holder.tv_date.setText(date);
 
         if(list.get(position).getStatus().equalsIgnoreCase("present")){
             holder.iv_right.setImageResource(R.mipmap.right_atten_01);
@@ -86,4 +90,21 @@ public class Student_View_Attendance_Adapter extends RecyclerView.Adapter<Studen
         return list.size();
     }
 
+    public String parseDateToddMMyyyy(String time) {
+        String inputPattern = "yyyy-MM-dd";
+        String outputPattern = "dd-MM-yyyy";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(time);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
 }

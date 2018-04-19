@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import in.objectsol.my_roomie.R;
 import in.objectsol.my_roomie.SetGet.Permission_SetGet;
@@ -32,12 +35,13 @@ public class Student_Complaint_List_Adapter extends RecyclerView.Adapter<Student
     ProgressDialog pDialog;
     SharedPreferences sharedPreferences;
     String student_id="";
+    public static boolean isFromStudent=false;
 
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView tv_complaint,tv_date,tv_complaint_description,tv_status;
+        public TextView tv_complaint,tv_date,tv_complaint_description,tv_status,tv_student_name,tv_room_no;
         public ImageView iv_child_complaint_granted;
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -47,6 +51,8 @@ public class Student_Complaint_List_Adapter extends RecyclerView.Adapter<Student
             tv_complaint_description = (TextView) itemView.findViewById(R.id.tv_child_complaint_description);
             iv_child_complaint_granted = (ImageView) itemView.findViewById(R.id.iv_child_complaint_granted);
 
+            tv_student_name = (TextView) itemView.findViewById(R.id.tv_student_name_child_student_complaint);
+            tv_room_no = (TextView) itemView.findViewById(R.id.tv_room_no_child_student_complaint);
         }
     }
 
@@ -71,10 +77,20 @@ public class Student_Complaint_List_Adapter extends RecyclerView.Adapter<Student
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        holder.tv_date.setText(list.get(position).getCreated_at());
+        String createdTime=list.get(position).getCreated_at();
+        holder.tv_date.setText(createdTime);
         holder.tv_complaint.setText(list.get(position).getPermission_type());
         holder.tv_complaint_description.setText(list.get(position).getDescription());
 
+        if(isFromStudent){
+            holder.tv_room_no.setVisibility(View.GONE);
+            holder.tv_student_name.setVisibility(View.GONE);
+        }else {
+            holder.tv_room_no.setVisibility(View.VISIBLE);
+            holder.tv_student_name.setVisibility(View.VISIBLE);
+            holder.tv_room_no.setText("Room No : " + list.get(position).getRoom_no());
+            holder.tv_student_name.setText("Name : " + list.get(position).getStudent_name());
+        }
 
         if(list.get(position).getStatus().equalsIgnoreCase("pending")){
 
@@ -103,4 +119,21 @@ public class Student_Complaint_List_Adapter extends RecyclerView.Adapter<Student
         return list.size();
     }
 
+    public String parseDateToddMMyyyy(String time) {
+        String inputPattern = "yyyy-MM-dd HH:mm";
+        String outputPattern = "dd-MM-yyyy HH:mm";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(time);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
 }

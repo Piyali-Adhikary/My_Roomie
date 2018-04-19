@@ -176,7 +176,7 @@ public class Student_Complaint_List extends Activity implements IJSONParseListen
 
                             complaint_setGetArrayList.add(permission_setGet);
                         }
-
+                        Student_Complaint_List_Adapter.isFromStudent=true;
                         Student_Complaint_List_Adapter student_complaint_list_adapter= new Student_Complaint_List_Adapter(Student_Complaint_List.this,complaint_setGetArrayList);
                         rv_student_complaint_list.setAdapter(student_complaint_list_adapter);
 

@@ -174,6 +174,8 @@ public class Warden_Complaint_Status extends Activity implements IJSONParseListe
                             permission_setGet.setDescription(jsonObject.getString("description"));
                             permission_setGet.setCreated_at(jsonObject.getString("created_at"));
                             permission_setGet.setStatus(jsonObject.getString("status"));
+                            permission_setGet.setRoom_no(jsonObject.getString("room_no"));
+                            permission_setGet.setStudent_name(jsonObject.getString("student_name"));
 
                             complaint_setGetArrayList.add(permission_setGet);
                         }
@@ -201,10 +203,13 @@ public class Warden_Complaint_Status extends Activity implements IJSONParseListe
                             permission_setGet.setDescription(jsonObject.getString("description"));
                             permission_setGet.setCreated_at(jsonObject.getString("created_at"));
                             permission_setGet.setStatus(jsonObject.getString("status"));
+                            permission_setGet.setRoom_no(jsonObject.getString("room_no"));
+                            permission_setGet.setStudent_name(jsonObject.getString("student_name"));
 
                             complaint_old_setGetArrayList.add(permission_setGet);
                         }
 
+                        Student_Complaint_List_Adapter.isFromStudent=false;
                         Student_Complaint_List_Adapter adapter=new Student_Complaint_List_Adapter(Warden_Complaint_Status.this,complaint_old_setGetArrayList);
                         rv_warden_complaint_old.setAdapter(adapter);
 

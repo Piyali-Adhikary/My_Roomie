@@ -22,7 +22,10 @@ import com.android.volley.VolleyError;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import in.objectsol.my_roomie.Activity.Parent_Permission_Request;
 import in.objectsol.my_roomie.R;
@@ -92,11 +95,16 @@ public class Parent_Permission_Request_Adapter extends RecyclerView.Adapter<Pare
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        holder.tv_date.setText(list.get(position).getCreated_at());
+        final String createdTime=list.get(position).getCreated_at();
+        holder.tv_date.setText(createdTime);
         holder.tv_permission.setText(list.get(position).getPermission_type());
         holder.tv_permission_description.setText(list.get(position).getDescription());
-        holder.tv_from.setText("From : " +list.get(position).getFrom_time());
-        holder.tv_to.setText("To : " +list.get(position).getTo_time());
+
+        final String fromTime=list.get(position).getFrom_time();
+        holder.tv_from.setText("From : " +fromTime);
+
+        final String toTime=list.get(position).getTo_time();
+        holder.tv_to.setText("To : " +toTime);
 
 
 
@@ -116,11 +124,11 @@ public class Parent_Permission_Request_Adapter extends RecyclerView.Adapter<Pare
             @Override
             public void onClick(View view) {
 
-                permission_created_at=list.get(position).getCreated_at();
+                permission_created_at=createdTime;
                 permission_type=list.get(position).getPermission_type();
                 description=list.get(position).getDescription();
-                from_time=list.get(position).getFrom_time();
-                to_time=list.get(position).getTo_time();
+                from_time=fromTime;
+                to_time=toTime;
                 permission_id=list.get(position).getId();
 
                 if(list.get(position).getPermission_granted().equalsIgnoreCase("no")){
@@ -318,5 +326,21 @@ public class Parent_Permission_Request_Adapter extends RecyclerView.Adapter<Pare
             pDialog.dismiss();
     }
 
+    public String parseDateToddMMyyyy(String time) {
+        String inputPattern = "yyyy-MM-dd HH:mm";
+        String outputPattern = "dd-MM-yyyy HH:mm";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
 
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(time);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
 }

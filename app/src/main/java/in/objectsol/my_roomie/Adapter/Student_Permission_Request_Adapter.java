@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import in.objectsol.my_roomie.R;
 import in.objectsol.my_roomie.SetGet.Permission_SetGet;
@@ -71,11 +74,15 @@ public class Student_Permission_Request_Adapter extends RecyclerView.Adapter<Stu
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        holder.tv_date.setText(list.get(position).getCreated_at());
+        String createdTime=parseDateToddMMyyyy(list.get(position).getCreated_at());
+        holder.tv_date.setText(createdTime);
         holder.tv_permission.setText(list.get(position).getPermission_type());
         holder.tv_permission_description.setText(list.get(position).getDescription());
-        holder.tv_from.setText("From : " +list.get(position).getFrom_time());
-        holder.tv_to.setText("To : " +list.get(position).getTo_time());
+
+        String fromTime=parseDateToddMMyyyy(list.get(position).getFrom_time());
+        holder.tv_from.setText("From : " +fromTime);
+        String toTime=parseDateToddMMyyyy(list.get(position).getTo_time());
+        holder.tv_to.setText("To : " +toTime);
 
         if(list.get(position).getStatus().equalsIgnoreCase("accepted")){
             holder.iv_permission_granted.setImageResource(R.mipmap.right_01);
@@ -94,4 +101,21 @@ public class Student_Permission_Request_Adapter extends RecyclerView.Adapter<Stu
         return list.size();
     }
 
+    public String parseDateToddMMyyyy(String time) {
+        String inputPattern = "yyyy-MM-dd HH:mm";
+        String outputPattern = "dd-MM-yyyy HH:mm";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(time);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
 }

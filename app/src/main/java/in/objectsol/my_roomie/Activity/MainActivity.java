@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,IJSONParseListener {
 
     ImageView iv_attendance_warden,iv_foodmenu_warden,iv_permission_warden;
-    ImageView iv_parent_permission_request,iv_foodmenu_list_parent,iv_parent_payment_status;
-    ImageView iv_service_request,iv_student_food_menu, iv_payment_status_student;
+    ImageView iv_parent_permission_request,iv_foodmenu_list_parent,iv_parent_payment_status,iv_attendance_parent;
+    ImageView iv_permission_request_dashboard_student,iv_student_food_menu, iv_payment_status_student;
 
     String name = "",privacy_type="";
     ImageView imageView;
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         //Student View
-        iv_service_request=(ImageView)findViewById(R.id.iv_service_request);
+        iv_permission_request_dashboard_student=(ImageView)findViewById(R.id.iv_permission_request_dashboard_student);
         iv_student_food_menu=(ImageView)findViewById(R.id.iv_student_food_menu);
         iv_payment_status_student=(ImageView)findViewById(R.id.iv_payment_status_student);
 
@@ -177,10 +177,10 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        iv_service_request.setOnClickListener(new View.OnClickListener() {
+        iv_permission_request_dashboard_student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,Student_Service_Request.class);
+                Intent intent=new Intent(MainActivity.this,Student_Permission.class);
                 startActivity(intent);
                 finish();
             }
@@ -232,6 +232,7 @@ public class MainActivity extends AppCompatActivity
         iv_parent_permission_request=(ImageView)findViewById(R.id.iv_parent_permission_request);
         iv_foodmenu_list_parent=(ImageView)findViewById(R.id.iv_foodmenu_list_parent);
         iv_parent_payment_status=(ImageView)findViewById(R.id.iv_parent_payment_status);
+        iv_attendance_parent=(ImageView)findViewById(R.id.iv_attendance_parent);
 
         iv_parent_payment_status.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -257,6 +258,31 @@ public class MainActivity extends AppCompatActivity
                 Intent intent=new Intent(MainActivity.this,Parent_Food_Items.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        iv_attendance_parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Utils.isNetworkAvailable(MainActivity.this)) {
+                    privacy_type="attendance";
+                    getisParentAllowedToCheckPrivacyType("attendance");
+                }
+                else {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+                    alertDialogBuilder.setTitle("No Network Available");
+                    alertDialogBuilder.setMessage("Please Turn On Your Internet Connection");
+                    alertDialogBuilder.setCancelable(false);
+                    alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
+
             }
         });
         //FCM BroadcastReceiver
@@ -382,7 +408,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 finish();
 
-            } else if (id == R.id.nav_time_in_time_out) {
+            } /*else if (id == R.id.nav_time_in_time_out) {
 
 
                 if (Utils.isNetworkAvailable(MainActivity.this)) {
@@ -405,7 +431,7 @@ public class MainActivity extends AppCompatActivity
                 }
 
 
-            } else if (id == R.id.nav_permission_request_parent) {
+            }*/ else if (id == R.id.nav_permission_request_parent) {
 
                 Intent intent=new Intent(MainActivity.this, Parent_Permission_Request.class);
                 startActivity(intent);
@@ -465,14 +491,16 @@ public class MainActivity extends AppCompatActivity
             } else if (id == R.id.nav_security) {
                 Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
             } else if (id == R.id.nav_visitors) {
-                Toast.makeText(MainActivity.this, "Yet to be Implemented", Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.nav_enter_time_in) {
+                Intent intent= new Intent(MainActivity.this,Visitor_Warden.class);
+                startActivity(intent);
+                finish();
+            } /*else if (id == R.id.nav_enter_time_in) {
 
                 Intent intent= new Intent(MainActivity.this,Warden_Time_In_Time_Out.class);
                 startActivity(intent);
                 finish();
 
-            } else if (id == R.id.nav_logout_warden) {
+            }*/ else if (id == R.id.nav_logout_warden) {
 
                 user_id=sharedPreferences.getString("warden_id","");
                 Dologout();

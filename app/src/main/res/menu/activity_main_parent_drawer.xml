@@ -15,10 +15,10 @@
             android:id="@+id/nav_payments_due"
             android:icon="@mipmap/pay"
             android:title="Payments Due" />
-        <item
+        <!--<item
             android:id="@+id/nav_time_in_time_out"
             android:icon="@mipmap/timein"
-            android:title="Time In &amp; Time Out" />
+            android:title="Time In &amp; Time Out" />-->
 
         <item
             android:id="@+id/nav_permission_request_parent"

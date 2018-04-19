@@ -292,7 +292,7 @@ public class Student_Complaint_Request extends Activity implements IJSONParseLis
         int mHour = c.get(Calendar.HOUR_OF_DAY);
         int mMinute = c.get(Calendar.MINUTE);
 
-        date=String.valueOf(mYear) +"-"+String.valueOf(mMonth+1)+"-"+String.valueOf(mDay)+" "+String.valueOf(mHour) + ":" + String.valueOf(mMinute);
+        date= String.valueOf(mDay)+"-"+String.valueOf(mMonth+1)+"-"+String.valueOf(mYear)+" "+String.valueOf(mHour) + ":" + String.valueOf(mMinute);
 
     }
 

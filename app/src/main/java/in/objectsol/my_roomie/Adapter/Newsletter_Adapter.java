@@ -9,7 +9,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import in.objectsol.my_roomie.R;
 import in.objectsol.my_roomie.SetGet.NewsLetter_SetGet;
@@ -60,7 +63,8 @@ public class Newsletter_Adapter extends RecyclerView.Adapter<Newsletter_Adapter.
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
         holder.tv_title.setText(list.get(position).getNotice_title());
-        holder.tv_date.setText(list.get(position).getDatetime());
+        String date= parseDateToddMMyyyy(list.get(position).getDatetime());
+        holder.tv_date.setText(date);
         holder.tv_newsletter_content.setText(list.get(position).getNotice_content());
 
     }
@@ -70,4 +74,21 @@ public class Newsletter_Adapter extends RecyclerView.Adapter<Newsletter_Adapter.
         return list.size();
     }
 
+    public String parseDateToddMMyyyy(String time) {
+        String inputPattern = "yyyy-MM-dd";
+        String outputPattern = "dd-MM-yyyy";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(time);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
 }

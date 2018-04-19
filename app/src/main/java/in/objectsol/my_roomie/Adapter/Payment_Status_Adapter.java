@@ -11,7 +11,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import in.objectsol.my_roomie.R;
 import in.objectsol.my_roomie.SetGet.Payment_SetGet;
@@ -109,8 +112,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_jan().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_jan().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_jan().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -165,8 +169,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_feb().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_feb().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_feb().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -221,8 +226,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_march().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_march().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_march().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -278,8 +284,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_april().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_april().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_april().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -335,8 +342,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_may().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_may().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_may().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -392,8 +400,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_june().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_june().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_june().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -449,8 +458,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_july().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_july().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_july().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -506,8 +516,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_aug().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_aug().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_aug().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -563,8 +574,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_sept().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_sept().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_sept().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -620,8 +632,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_oct().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_oct().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_oct().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -677,8 +690,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_nov().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_nov().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_nov().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -734,8 +748,9 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
                 tv_payment_for.setText("Payment For : " + list.get(position).getArrayList_dec().get(i).getPayment_for());
                 tv_payment_for.setPadding(10,5,10,5);
 
+                String date= parseDateToddMMyyyy(list.get(position).getArrayList_dec().get(i).getPayment_date());
                 TextView tv_payment_date= new TextView(mContext);
-                tv_payment_date.setText("Payment Date : " + list.get(position).getArrayList_dec().get(i).getPayment_date());
+                tv_payment_date.setText("Payment Date : " + date);
                 tv_payment_date.setPadding(10,5,10,5);
 
                 linearLayout.addView(tv_amount);
@@ -774,4 +789,22 @@ public class Payment_Status_Adapter extends RecyclerView.Adapter<Payment_Status_
         return list.size();
     }
 
+
+    public String parseDateToddMMyyyy(String time) {
+        String inputPattern = "yyyy-MM-dd";
+        String outputPattern = "dd-MM-yyyy";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(outputPattern);
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(time);
+            str = outputFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return str;
+    }
 }

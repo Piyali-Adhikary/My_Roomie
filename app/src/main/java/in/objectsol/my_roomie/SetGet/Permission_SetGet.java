@@ -6,8 +6,24 @@ package in.objectsol.my_roomie.SetGet;
 
 public class Permission_SetGet {
 
-    String student_id="", campus_id="", id="",description="",created_at="";
+    String student_id="", campus_id="", id="",description="",created_at="",room_no="",student_name="";
     String permission_type="", from_time="", to_time="",status="",permission_granted="no", permission_rejected="no";
+
+    public String getRoom_no() {
+        return room_no;
+    }
+
+    public void setRoom_no(String room_no) {
+        this.room_no = room_no;
+    }
+
+    public String getStudent_name() {
+        return student_name;
+    }
+
+    public void setStudent_name(String student_name) {
+        this.student_name = student_name;
+    }
 
     public String getPermission_granted() {
         return permission_granted;
