@@ -140,7 +140,7 @@ public class Parent_Permission_Request_Adapter extends RecyclerView.Adapter<Pare
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
                     alertDialogBuilder.setTitle("Alert");
-                    alertDialogBuilder.setMessage("Do you want to submit permission?");
+                    alertDialogBuilder.setMessage("Do you want to accept permission?");
                     alertDialogBuilder.setCancelable(false);
                     alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
@@ -187,7 +187,7 @@ public class Parent_Permission_Request_Adapter extends RecyclerView.Adapter<Pare
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
                     alertDialogBuilder.setTitle("Alert");
-                    alertDialogBuilder.setMessage("Do you want to submit permission?");
+                    alertDialogBuilder.setMessage("Do you want to reject permission?");
                     alertDialogBuilder.setCancelable(false);
                     alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override

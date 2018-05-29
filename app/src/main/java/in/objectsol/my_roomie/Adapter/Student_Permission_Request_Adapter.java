@@ -74,14 +74,14 @@ public class Student_Permission_Request_Adapter extends RecyclerView.Adapter<Stu
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        String createdTime=parseDateToddMMyyyy(list.get(position).getCreated_at());
+        String createdTime=list.get(position).getCreated_at();
         holder.tv_date.setText(createdTime);
         holder.tv_permission.setText(list.get(position).getPermission_type());
         holder.tv_permission_description.setText(list.get(position).getDescription());
 
-        String fromTime=parseDateToddMMyyyy(list.get(position).getFrom_time());
+        String fromTime=list.get(position).getFrom_time();
         holder.tv_from.setText("From : " +fromTime);
-        String toTime=parseDateToddMMyyyy(list.get(position).getTo_time());
+        String toTime=list.get(position).getTo_time();
         holder.tv_to.setText("To : " +toTime);
 
         if(list.get(position).getStatus().equalsIgnoreCase("accepted")){

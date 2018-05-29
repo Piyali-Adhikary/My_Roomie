@@ -10,7 +10,7 @@
         android:background="@color/colorPrimaryDark">
 
         <ImageView
-            android:id="@+id/iv_back_food_menu"
+            android:id="@+id/iv_back_food_items"
             android:padding="15dp"
             android:layout_gravity="left|center"
             android:layout_width="wrap_content"

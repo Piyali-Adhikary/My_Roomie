@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_weight="0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tv_student_name_community_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mahendra Jordan"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:gravity="center"
+            android:padding="15dp"/>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_profile_pic_community_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_margin="10dp"
+            app:layout_anchor="@id/app_bar"
+            app:layout_anchorGravity="bottom|center"
+            app:civ_border_width="2dp"
+            android:layout_gravity="center"
+            app:civ_border_color="@color/colorPrimaryDark"/>
+
+        <TextView
+            android:id="@+id/tv_student_membership_community_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MyRoomie Member Since ________ 2018"
+            android:textColor="#000"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:padding="15dp"/>
+
+        </LinearLayout>
+
+    <ScrollView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BASIC PROFILE"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:background="#e7e7e7"
+            android:padding="15dp"/>
+
+        <TextView
+            android:id="@+id/tv_student_name_two_community_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Michael Jordan"
+            android:textColor="#000"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:drawablePadding="15dp"
+            android:drawableLeft="@drawable/profile_filled"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/LightGrey"/>
+
+        <TextView
+            android:id="@+id/tv_student_dob_community_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DOB"
+            android:textColor="#000"
+            android:padding="15dp"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:drawablePadding="15dp"
+            android:drawableLeft="@drawable/dob_filled"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/LightGrey"/>
+
+        <TextView
+            android:id="@+id/tv_student_university_community_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name of University"
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:background="@drawable/box_eddittext"
+            android:padding="15dp"
+            android:layout_margin="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PRIVATE INFORMATION"
+            android:textColor="#000"
+            android:textSize="18sp"
+            android:background="#e7e7e7"
+            android:padding="15dp"/>
+
+        <TextView
+            android:id="@+id/tv_student_email_community_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="michaeljordan@gmail.com"
+            android:textColor="#000"
+            android:padding="15dp"
+            android:textSize="15sp"
+            android:gravity="center_vertical"
+            android:drawablePadding="15dp"
+            android:drawableLeft="@drawable/email_filled"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/LightGrey"/>
+
+        <TextView
+            android:id="@+id/tv_student_phone_community_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+911234567890"
+            android:textColor="#000"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:drawablePadding="15dp"
+            android:textSize="15sp"
+            android:drawableLeft="@drawable/phone_filled"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/LightGrey"/>
+
+        <TextView
+            android:id="@+id/tv_student_gender_community_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Male"
+            android:textSize="15sp"
+            android:textColor="#000"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:drawablePadding="15dp"
+            android:drawableLeft="@drawable/gender_filled"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/LightGrey"/>
+
+        <TextView
+            android:id="@+id/tv_student_room_number_community_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Room No 202"
+            android:textColor="#000"
+            android:padding="15dp"
+            android:gravity="center_vertical"
+            android:textSize="15sp"
+            android:drawablePadding="15dp"
+            android:drawableLeft="@drawable/room_no_filled"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/LightGrey"/>
+
+
+    </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_weight="0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#e7e7e7">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/login_logo"/>
+    </LinearLayout>
+
+</LinearLayout>

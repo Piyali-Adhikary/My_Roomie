@@ -35,7 +35,7 @@
                 android:text="Title"
                 android:gravity="left"
                 android:textStyle="bold"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:singleLine="true"/>
 
             <TextView
@@ -50,7 +50,7 @@
                 android:text="18/2/2018"
                 android:textStyle="bold"
                 android:gravity="right"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 />
         </LinearLayout>
 
@@ -59,16 +59,16 @@
                 android:layout_height="2dp"
                 android:background="@color/LightGrey"/>
 
-        <TextView
-            android:id="@+id/tv_newsletter_content_child_newsletter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="15dp"
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
-            android:paddingBottom="15dp"
-            android:textSize="14sp"
-            android:text="anything"/>
+            <TextView
+                android:id="@+id/tv_newsletter_content_child_newsletter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="15dp"
+                android:text="anything"
+                android:textSize="16sp" />
         </LinearLayout>
         </android.support.v7.widget.CardView>
 </LinearLayout>

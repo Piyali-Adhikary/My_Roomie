@@ -71,7 +71,7 @@ public class Visitor_Warden_Adapter extends RecyclerView.Adapter<Visitor_Warden_
         holder.tv_visitor_name.setText("Visitor's Name : " + list.get(position).getName());
         holder.tv_visitor_ph.setText("Visitor's Contact : "+list.get(position).getContact());
         holder.tv_student_name.setText("Student Name : " +list.get(position).getStudent_name());
-        holder.tv_relationship.setText("Relation With Student : "+list.get(position).getName());
+        holder.tv_relationship.setText("Relation With Student : "+list.get(position).getRelationship_with_student());
         holder.tv_time_in.setText("Time-IN : "+list.get(position).getTime_in());
         holder.tv_time_out.setText("Time-OUT : "+list.get(position).getTime_out());
 

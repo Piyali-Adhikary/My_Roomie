@@ -44,9 +44,10 @@ import in.objectsol.my_roomie.Utils.MyVolley;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,IJSONParseListener {
 
-    ImageView iv_attendance_warden,iv_foodmenu_warden,iv_permission_warden;
+    ImageView iv_attendance_warden,iv_foodmenu_warden,iv_permission_warden,iv_visitor_warden;
     ImageView iv_parent_permission_request,iv_foodmenu_list_parent,iv_parent_payment_status,iv_attendance_parent;
-    ImageView iv_permission_request_dashboard_student,iv_student_food_menu, iv_payment_status_student;
+    ImageView iv_permission_request_dashboard_student,iv_student_food_menu, iv_payment_status_student,iv_community_dashboard_student,
+            iv_contest_student,iv_services_student;
 
     String name = "",privacy_type="";
     ImageView imageView;
@@ -166,12 +167,44 @@ public class MainActivity extends AppCompatActivity
         //Student View
         iv_permission_request_dashboard_student=(ImageView)findViewById(R.id.iv_permission_request_dashboard_student);
         iv_student_food_menu=(ImageView)findViewById(R.id.iv_student_food_menu);
+        iv_community_dashboard_student=(ImageView)findViewById(R.id.iv_community_dashboard_student);
         iv_payment_status_student=(ImageView)findViewById(R.id.iv_payment_status_student);
+        iv_services_student=(ImageView)findViewById(R.id.iv_services_student);
+        iv_contest_student=(ImageView)findViewById(R.id.iv_contest_student);
+
+        iv_services_student.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Services_Student.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        iv_contest_student.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Contest.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         iv_payment_status_student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Payment_Debit.isfromParent=false;
                 Intent intent=new Intent(MainActivity.this,Payment_Status.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        iv_community_dashboard_student.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Payment_Debit.isfromParent=false;
+                Intent intent=new Intent(MainActivity.this,Community_Student_Updated.class);
                 startActivity(intent);
                 finish();
             }
@@ -189,7 +222,7 @@ public class MainActivity extends AppCompatActivity
         iv_student_food_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,Food_Items.class);
+                Intent intent=new Intent(MainActivity.this,Food_Menu_Updated.class);
                 startActivity(intent);
                 finish();
             }
@@ -199,6 +232,7 @@ public class MainActivity extends AppCompatActivity
         iv_attendance_warden=(ImageView)findViewById(R.id.iv_attendance_warden);
         iv_foodmenu_warden=(ImageView)findViewById(R.id.iv_foodmenu_warden);
         iv_permission_warden=(ImageView)findViewById(R.id.iv_permission_warden);
+        iv_visitor_warden=(ImageView)findViewById(R.id.iv_visitor_warden);
 
         iv_attendance_warden.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -221,7 +255,16 @@ public class MainActivity extends AppCompatActivity
         iv_foodmenu_warden.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,Warden_Food_Items.class);
+                Intent intent=new Intent(MainActivity.this,Warden_Food_Menu.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        iv_visitor_warden.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,Visitor_Warden.class);
                 startActivity(intent);
                 finish();
             }
@@ -237,6 +280,7 @@ public class MainActivity extends AppCompatActivity
         iv_parent_payment_status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Payment_Debit.isfromParent=true;
                 Intent intent=new Intent(MainActivity.this,Payments_Due_Parents.class);
                 startActivity(intent);
                 finish();
@@ -255,7 +299,7 @@ public class MainActivity extends AppCompatActivity
         iv_foodmenu_list_parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,Parent_Food_Items.class);
+                Intent intent=new Intent(MainActivity.this,Parent_Food_Menu.class);
                 startActivity(intent);
                 finish();
             }
@@ -355,6 +399,7 @@ public class MainActivity extends AppCompatActivity
                 finish();
 
             } else if (id == R.id.nav_payment_status) {
+                Payment_Debit.isfromParent=false;
                 Intent intent= new Intent(MainActivity.this,Payment_Status.class);
                 startActivity(intent);
                 finish();
@@ -399,7 +444,7 @@ public class MainActivity extends AppCompatActivity
                 finish();
 
             } else if (id == R.id.nav_food_menu) {
-                Intent intent=new Intent(MainActivity.this,Parent_Food_Items.class);
+                Intent intent=new Intent(MainActivity.this,Parent_Food_Menu.class);
                 startActivity(intent);
                 finish();
             } else if (id == R.id.nav_payments_due) {

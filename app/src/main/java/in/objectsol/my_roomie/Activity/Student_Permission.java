@@ -33,9 +33,11 @@ import java.util.Date;
 
 import in.objectsol.my_roomie.Adapter.Parent_Permission_Request_Adapter;
 import in.objectsol.my_roomie.Adapter.Parent_Permission_Request_Old_Adapter;
+import in.objectsol.my_roomie.Adapter.Student_Community_Request_Adapter;
 import in.objectsol.my_roomie.Adapter.Student_Permission_Request_Adapter;
 import in.objectsol.my_roomie.Others.Utils;
 import in.objectsol.my_roomie.R;
+import in.objectsol.my_roomie.SetGet.Permission_Community_SetGet;
 import in.objectsol.my_roomie.SetGet.Permission_SetGet;
 import in.objectsol.my_roomie.Utils.IJSONParseListener;
 import in.objectsol.my_roomie.Utils.JSONRequestResponse;
@@ -50,7 +52,7 @@ public class Student_Permission extends Activity implements IJSONParseListener{
     RecyclerView rv_student_permission;
     ImageView iv_back;
     TextView tv_student_permission;
-    LinearLayoutManager layoutManager;
+    LinearLayoutManager layoutManager,layoutManager1;
     Button btn_new_permission_request;
 
     int getstudentsPermissionsList=616;
@@ -58,6 +60,13 @@ public class Student_Permission extends Activity implements IJSONParseListener{
     SharedPreferences sharedPreferences;
     ArrayList<Permission_SetGet> permission_setGetArrayList;
     private static final String Student_Permissions_List_URL = "http://174.136.1.35/dev/myroomie/student/studentsPermissionsList/";
+
+    //Updated
+    int getstudentCommunityShow=617;
+    RecyclerView rv_student_community_permission;
+    TextView tv_student_community_permission;
+    private static final String Student_Community_List_URL = "http://174.136.1.35/dev/myroomie/student/studentCommunityShow/";
+    ArrayList<Permission_Community_SetGet> arrayList_community;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,15 +76,23 @@ public class Student_Permission extends Activity implements IJSONParseListener{
         sharedPreferences=getSharedPreferences("Login",MODE_PRIVATE);
         iv_back=(ImageView) findViewById(R.id.iv_back_student_permission);
         rv_student_permission=(RecyclerView) findViewById(R.id.rv_student_permission);
+        rv_student_community_permission=(RecyclerView) findViewById(R.id.rv_student_community_permission);
         btn_new_permission_request=(Button) findViewById(R.id.btn_new_permission_request);
         tv_student_permission=(TextView) findViewById(R.id.tv_student_permission);
+        tv_student_community_permission=(TextView) findViewById(R.id.tv_student_community_permission);
 
         permission_setGetArrayList=new ArrayList<>();
+        arrayList_community=new ArrayList<>();
 
         rv_student_permission.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         rv_student_permission.setLayoutManager(layoutManager);
         rv_student_permission.setItemAnimator(new DefaultItemAnimator());
+
+        rv_student_community_permission.setHasFixedSize(true);
+        layoutManager1 = new LinearLayoutManager(this);
+        rv_student_community_permission.setLayoutManager(layoutManager1);
+        rv_student_community_permission.setItemAnimator(new DefaultItemAnimator());
 
         iv_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +108,7 @@ public class Student_Permission extends Activity implements IJSONParseListener{
         if (Utils.isNetworkAvailable(Student_Permission.this)) {
 
             getstudentsPermissionsList();
+
 
         }
         else {
@@ -128,6 +146,19 @@ public class Student_Permission extends Activity implements IJSONParseListener{
         MyVolley.init(Student_Permission.this);
         ShowProgressDilog(Student_Permission.this);
         mResponse.getResponse(Request.Method.POST, Student_Permissions_List_URL, getstudentsPermissionsList, Student_Permission.this, parms, false);
+    }
+
+
+    void studentCommunityShow() {
+        JSONRequestResponse mResponse = new JSONRequestResponse(Student_Permission.this);
+        Bundle parms = new Bundle();
+        parms.putString("campus_id", sharedPreferences.getString("campus_id",""));
+        parms.putString("student_id", sharedPreferences.getString("student_id",""));
+        parms.putString("auth_key", sharedPreferences.getString("auth_token",""));
+
+        MyVolley.init(Student_Permission.this);
+        ShowProgressDilog(Student_Permission.this);
+        mResponse.getResponse(Request.Method.POST, Student_Community_List_URL, getstudentCommunityShow, Student_Permission.this, parms, false);
     }
 
     @Override
@@ -192,6 +223,27 @@ public class Student_Permission extends Activity implements IJSONParseListener{
                         tv_student_permission.setVisibility(View.VISIBLE);
                     }
 
+
+                    if (Utils.isNetworkAvailable(Student_Permission.this)) {
+
+                        studentCommunityShow();
+
+
+                    }
+                    else {
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Student_Permission.this);
+                        alertDialogBuilder.setTitle("No Network Available");
+                        alertDialogBuilder.setMessage("Please Turn On Your Internet Connection");
+                        alertDialogBuilder.setCancelable(false);
+                        alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
+                    }
                 }else {
                     Toast.makeText(Student_Permission.this,response.getString("result"),Toast.LENGTH_LONG).show();
                 }
@@ -199,6 +251,47 @@ public class Student_Permission extends Activity implements IJSONParseListener{
 
             catch (JSONException e)
             {
+                e.printStackTrace();
+            }
+        }else if (requestCode == getstudentCommunityShow) {
+            System.out.println("Response for getstudentCommunityShow------" + response.toString());
+            DismissProgress(Student_Permission.this);
+
+            try {
+
+                if (response.getString("status_code").equalsIgnoreCase("success")) {
+                    JSONArray result=response.getJSONArray("result");
+
+                    if(result.length()>0) {
+
+                        rv_student_community_permission.setVisibility(View.VISIBLE);
+                        tv_student_community_permission.setVisibility(View.GONE);
+                        for (int i = 0; i < result.length(); i++) {
+
+                            JSONObject jsonObject = result.getJSONObject(i);
+
+                            Permission_Community_SetGet setGet = new Permission_Community_SetGet();
+                            setGet.setId(jsonObject.getString("id"));
+                            setGet.setCampus_id(jsonObject.getString("campus_id"));
+                            setGet.setStudent_id(jsonObject.getString("student_id"));
+                            setGet.setCommunity_id(jsonObject.getString("community_id"));
+                            setGet.setPermission_type(jsonObject.getString("permission_type"));
+                            setGet.setDescription(jsonObject.getString("description"));
+                            setGet.setCreated_at(jsonObject.getString("created_at"));
+                            setGet.setStatus(jsonObject.getString("status"));
+
+                            arrayList_community.add(setGet);
+                        }
+                        Student_Community_Request_Adapter adapter = new Student_Community_Request_Adapter(Student_Permission.this, arrayList_community);
+                        rv_student_community_permission.setAdapter(adapter);
+
+                    }else {
+                        rv_student_community_permission.setVisibility(View.GONE);
+                        tv_student_community_permission.setVisibility(View.VISIBLE);
+                    }
+                }
+
+            }catch (JSONException e) {
                 e.printStackTrace();
             }
         }

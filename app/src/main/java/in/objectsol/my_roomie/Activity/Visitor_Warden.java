@@ -213,4 +213,12 @@ public class Visitor_Warden extends Activity implements IJSONParseListener{
         if (pDialog != null && pDialog.isShowing())
             pDialog.dismiss();
     }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent=new Intent(Visitor_Warden.this,MainActivity.class);
+        startActivity(intent);
+        finish();
+
+    }
 }

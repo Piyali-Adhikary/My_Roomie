@@ -164,7 +164,10 @@ public class Warden_Request_Approval_Student_List extends Activity implements IJ
         }
 
         //calling a method of the adapter class and passing the filtered list
-        warden_adapter.filterList(student_searchArrayList);
+        if(warden_adapter!=null){
+            warden_adapter.filterList(student_searchArrayList);
+        }
+
     }
 
     void viewStudentByHostel() {

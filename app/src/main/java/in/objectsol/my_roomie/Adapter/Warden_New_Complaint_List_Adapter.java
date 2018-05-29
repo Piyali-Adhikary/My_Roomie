@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import org.json.JSONObject;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 import in.objectsol.my_roomie.Activity.Parent_Permission_Request;
@@ -47,7 +50,7 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
     Context mContext;
     int resourceID;
     String status="";
-    Boolean isPresent=true;
+    Boolean isAfter=false;
     int studentComplaintStatusChange=619;
     ProgressDialog pDialog;
     SharedPreferences sharedPreferences;
@@ -60,6 +63,7 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
 
         public TextView tv_complaint,tv_date,tv_complaint_description,tv_status,tv_student_name,tv_room_no;
         public ImageView iv_child_complaint_granted;
+        public LinearLayout ll_complaint;
         public MyViewHolder(View itemView) {
             super(itemView);
             tv_complaint = (TextView) itemView.findViewById(R.id.tv_child_student_complaint);
@@ -69,6 +73,7 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
             iv_child_complaint_granted = (ImageView) itemView.findViewById(R.id.iv_child_complaint_granted);
             tv_student_name = (TextView) itemView.findViewById(R.id.tv_student_name_child_student_complaint);
             tv_room_no = (TextView) itemView.findViewById(R.id.tv_room_no_child_student_complaint);
+            ll_complaint = (LinearLayout) itemView.findViewById(R.id.ll_complaint);
 
         }
     }
@@ -98,6 +103,18 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
         holder.tv_date.setText(createdTime);
         holder.tv_complaint.setText(list.get(position).getPermission_type());
         holder.tv_complaint_description.setText(list.get(position).getDescription());
+
+        boolean isTime=dateAfterFourHours(createdTime);
+
+        if (isTime){
+            holder.tv_date.setBackgroundColor(Color.parseColor("#ff6666"));
+            holder.tv_complaint.setBackgroundColor(Color.parseColor("#ff6666"));
+            holder.tv_date.setTextColor(Color.parseColor("#000000"));
+            holder.tv_complaint.setTextColor(Color.parseColor("#000000"));
+        }else {
+            holder.tv_date.setBackgroundColor(Color.parseColor("#ffffff"));
+            holder.tv_complaint.setBackgroundColor(Color.parseColor("#ffffff"));
+        }
 
         holder.tv_room_no.setText("Room No : " + list.get(position).getRoom_no());
         holder.tv_student_name.setText("Name : " + list.get(position).getStudent_name());
@@ -301,4 +318,32 @@ public class Warden_New_Complaint_List_Adapter extends RecyclerView.Adapter<Ward
         }
         return str;
     }
+
+    public boolean dateAfterFourHours(String date){
+
+        Date date4,current_date;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
+
+        try{
+            Calendar c = Calendar.getInstance();
+            current_date=c.getTime();
+
+            Date strDate = sdf.parse(date);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(strDate);
+            calendar.add(Calendar.HOUR, 4);
+            date4 = calendar.getTime();
+            if (current_date.after(date4)) {
+                isAfter=true;
+            }else {
+                isAfter=false;
+            }
+
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+
+        return isAfter;
+    }
+
 }

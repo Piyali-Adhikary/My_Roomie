@@ -7,6 +7,15 @@ package in.objectsol.my_roomie.SetGet;
 public class Payment_Status_SetGet {
 
     String id="" , campus_id="", student_id="", year="", month="", payment_amount="", payment_status="", payment_date="", payment_for="";
+    String created_at="";
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
 
     public String getId() {
         return id;

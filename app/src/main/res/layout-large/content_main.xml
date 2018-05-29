@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
     <LinearLayout
         android:layout_marginTop="70dp"
@@ -28,16 +28,17 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/iv_service_request"
+            android:id="@+id/iv_permission_request_dashboard_student"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:clickable="false"
             android:focusable="false"
             android:padding="3dp"
-            android:src="@mipmap/service_request" />
+            android:src="@mipmap/permission_dashboard" />
 
         <ImageView
+            android:id="@+id/iv_community_dashboard_student"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
@@ -66,6 +67,7 @@
         android:layout_marginRight="22dp">
 
     <ImageView
+        android:id="@+id/iv_payment_status_student"
         android:layout_weight="1"
         android:layout_width="188dp"
         android:layout_height="200dp"
@@ -73,6 +75,28 @@
         android:focusable="false"
         android:padding="3dp"
         android:src="@mipmap/payment_status" />
+
+
+        <ImageView
+            android:id="@+id/iv_services_student"
+            android:layout_weight="1"
+            android:layout_width="188dp"
+            android:layout_height="200dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:padding="3dp"
+            android:src="@mipmap/student_0001_services" />
+
+
+        <ImageView
+            android:id="@+id/iv_contest_student"
+            android:layout_weight="1"
+            android:layout_width="188dp"
+            android:layout_height="200dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:padding="3dp"
+            android:src="@mipmap/student_0000_contest" />
 
     </LinearLayout>
 
@@ -171,7 +195,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -192,6 +216,7 @@
                 android:src="@mipmap/permission" />
 
             <ImageView
+                android:id="@+id/iv_parent_payment_status"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:layout_weight="1"
@@ -228,6 +253,8 @@
                 android:focusable="false"
                 android:padding="3dp"
                 android:src="@mipmap/attendance" />
+
+
 
         </LinearLayout>
 

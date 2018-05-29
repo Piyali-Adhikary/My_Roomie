@@ -71,7 +71,7 @@ public class Student_View_Attendance_Adapter extends RecyclerView.Adapter<Studen
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
 
-        String date= parseDateToddMMyyyy(list.get(position).getDate());
+        String date= list.get(position).getDate();
         holder.tv_date.setText(date);
 
         if(list.get(position).getStatus().equalsIgnoreCase("present")){

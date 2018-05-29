@@ -5,15 +5,15 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/iv_back_permission_request_parent"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="15dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
             android:src="@mipmap/back" />
 
         <TextView
@@ -21,11 +21,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:layout_gravity="center"
             android:padding="10dp"
             android:text="Permission Request"
             android:textColor="@color/colorWhite"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </FrameLayout>
 
@@ -46,7 +45,7 @@
         android:gravity="center"
         android:visibility="gone"
         android:text="No New Permission Request Found"
-        android:textSize="20sp"/>
+        android:textSize="15sp"/>
 
     <LinearLayout
         android:layout_weight="0"
@@ -54,14 +53,16 @@
         android:background="#c5c5c5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:textColor="#000"
-            android:padding="15dp"
+            android:padding="10dp"
             android:text="Old Permissions"/>
 
     </LinearLayout>
@@ -70,7 +71,8 @@
         android:layout_weight="0.5"
         android:id="@+id/rv_parent_permission_request_old"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:paddingBottom="5dp">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -81,7 +83,7 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:text="No Old Permission Request Found"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:visibility="gone"/>
 
     <!--<LinearLayout-->
@@ -105,5 +107,44 @@
             <!--android:layout_gravity="center"/>-->
 
     <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:layout_weight="0"
+        android:orientation="vertical"
+        android:background="#c5c5c5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="18sp"
+            android:textColor="#000"
+            android:padding="10dp"
+            android:text="Community Permissions"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_weight="0.5"
+        android:id="@+id/rv_parent_community_permission_request"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingBottom="5dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_weight="0.5"
+        android:id="@+id/tv_community_permission"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="No Community Permission Request Found"
+        android:textSize="15sp"
+        android:visibility="gone"/>
 
 </LinearLayout>

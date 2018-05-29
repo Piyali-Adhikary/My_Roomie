@@ -8,7 +8,39 @@ public class Student_SetGet {
 
     String student_id="", campus_id="", room_no="", bed_no="", dob="", email="", address="", student_name="",student_pic="",user_type="";
     String mobile_number="",privacy_permission_status="", auth_token="", last_login="",status="",permission_status="", warden_id="";
-    String check_out_time="",check_in_time="",date="";
+    String check_out_time="",check_in_time="",date="",room_id="",gender="",member_since="",university="";
+
+    public String getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(String university) {
+        this.university = university;
+    }
+
+    public String getMember_since() {
+        return member_since;
+    }
+
+    public void setMember_since(String member_since) {
+        this.member_since = member_since;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getRoom_id() {
+        return room_id;
+    }
+
+    public void setRoom_id(String room_id) {
+        this.room_id = room_id;
+    }
 
     public String getDate() {
         return date;
